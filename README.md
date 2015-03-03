@@ -52,7 +52,7 @@ Plugin artifactId  | What does it do?
 ------------- | -------------
 jetty-console-startstop-plugin | Running java -jar myapp.war --createStartScript creates a Unix service script + config file
 jetty-console-winsrv-plugin | Running java -jar myapp.war --installWindowsService installs a Windows Service for running your service
-jetty-console-jsp-plugin  | Adds support for service JSP pages
+jetty-console-jsp-plugin  | Adds support for serving JSP pages
 jetty-console-jettyxml-plugin | Lets you configure the Jetty Server or WebappContext from Jetty XML config files.
 
 
