@@ -1,0 +1,4 @@
+option:createStartScript
+sample:servicename
+desc:Create Unix start/stop script
+section:Unix

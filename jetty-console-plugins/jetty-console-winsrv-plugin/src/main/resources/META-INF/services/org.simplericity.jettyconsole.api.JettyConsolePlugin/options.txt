@@ -1,0 +1,4 @@
+option:installWindowsService
+sample:serviceName
+desc:Install a Windows Service for the webapp
+section:Windows

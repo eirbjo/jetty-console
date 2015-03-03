@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>jetty-console-plugins</artifactId>
+        <groupId>org.simplericity.jettyconsole</groupId>
+        <version>1.54-SNAPSHOT</version>
+    </parent>
+    <artifactId>jetty-console-ajp-plugin</artifactId>
+
+    <name>Jetty Console AJP Plugin</name>
+    <dependencies>
+        <dependency>
+
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-ajp</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+
+    </dependencies>
+</project>

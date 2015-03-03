@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.simplericity.jettyconsole</groupId>
+        <artifactId>jetty-console</artifactId>
+        <version>1.58-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>jetty-console-plugins</artifactId>
+    <packaging>pom</packaging>
+    <name>Jetty-Console Plugins</name>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.simplericity.jettyconsole</groupId>
+            <artifactId>jetty-console-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+
+    </dependencies>
+
+    <modules>
+    <module>jetty-console-log4j-plugin</module>
+    <module>jetty-console-jettyxml-plugin</module>
+    <module>jetty-console-jsp-plugin</module>
+    <module>jetty-console-requestlog-plugin</module>
+    <module>jetty-console-gzip-plugin</module>
+    <module>jetty-console-winsrv-plugin</module>
+    <module>jetty-console-startstop-plugin</module>
+    <module>jetty-console-spdy-plugin</module>
+  </modules>
+</project>

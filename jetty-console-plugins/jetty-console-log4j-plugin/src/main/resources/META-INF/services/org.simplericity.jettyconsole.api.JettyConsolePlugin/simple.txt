@@ -1,0 +1,1 @@
+org.simplericity.jettyconsole.log4j.Log4jPlugin

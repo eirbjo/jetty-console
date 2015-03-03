@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.simplericity.jettyconsole</groupId>
+        <artifactId>jetty-console</artifactId>
+        <version>1.58-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>jetty-console-core</artifactId>
+    <packaging>jar</packaging>
+    <name>Jetty-Console Core</name>
+    <dependencies>
+
+        <dependency>
+            <groupId>org.simplericity.jettyconsole</groupId>
+            <artifactId>jetty-console-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-annotations</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.simplericity.macify</groupId>
+            <artifactId>macify</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kantega.jexmec</groupId>
+            <artifactId>jexmec-manager</artifactId>
+            <version>${jexmec.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kantega.jexmec</groupId>
+            <artifactId>jexmec-ctor-pl</artifactId>
+            <version>${jexmec.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

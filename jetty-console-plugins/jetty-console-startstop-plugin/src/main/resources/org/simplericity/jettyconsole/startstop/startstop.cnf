@@ -1,0 +1,22 @@
+# Configuration for %1$s
+JAVA_HOME=%2$s
+JAVA_USER=%3$s
+JAVA_OPTS="-server -Xmx512m"
+JAVA_ARGS="--headless --port 8080 --contextPath / --tmpDir jettyConsoleTmp"
+
+
+# DEPLOYCMD: Any redeployment command that suits your needs.
+#
+# Available variables for use in the command:
+#
+#   $2 - Any additional argument given redeploy command on the command line.
+#   $NEWJAR - The location to write the downloaded war file to.
+#
+# Here are some examples:
+# DEPLOYCMD="scp user@example.com:/usr/releases/latest/%1$s.war $NEWJAR"
+# DEPLOYCMD="scp user@example.com:/usr/releases/latest/$2.war $NEWJAR"
+# DEPLOYCMD="wget -O $NEWJAR http://example.com/releases/latest/%1$s.war"
+# DEPLOYCMD="wget -O $NEWJAR http://example.com/releases/latest/$2"
+# DEPLOYCMD="curl -o $NEWJAR http://example.com/releases/latest/%1$s.war"
+# DEPLOYCMD="curl -o $NEWJAR http://example.com/releases/latest/$2"
+# DEPLOYCMD="cp /from/path/%1$s.war $NEWJAR"

@@ -1,0 +1,9 @@
+option:jettyXml
+sample:file
+desc:Apply server configuration from a Jetty XML file
+section:Options
+
+option:jettyWebXml
+sample:file
+desc:Apply webapp context configuration from a Jetty XML file
+section:Options

@@ -1,0 +1,56 @@
+option:port
+sample:n
+desc:Create an HTTP listener on port n (default 8080)
+section:Options
+
+option:bindAddress
+sample:addr
+desc:Accept connections only on address addr (default: accept on any address)
+section:Options
+
+option:forwarded
+desc:Set reverse proxy handling using X-Forwarded-For headers
+section:Options
+
+option:requestHeaderSize
+sample:6144
+desc:Set the size of the buffer for request headers (in bytes).
+section:Options
+
+option:contextPath
+sample:/path
+desc:Set context path (default: /)
+section:Options
+
+
+option:dirAllowed
+sample:true|false
+desc:Allow directory indexes? (Default: false)
+section:Options
+
+option:extractWar
+sample:true|false
+desc:Extract war file? (Default: false)
+section:Options
+
+option:headless
+desc:Don't open graphical console, even if available
+section:Options
+
+help:help
+desc:Print this help message
+section:Options
+
+option:initParam
+sample:name=value
+desc:Set context init parameter
+section:Options
+
+option:sslProxied
+desc:Running behind an SSL proxy
+section:Options
+
+option:tmpDir
+sample:/path
+desc:Temporary directory, default is System.getProperty("java.io.tmpdir")
+section:Options

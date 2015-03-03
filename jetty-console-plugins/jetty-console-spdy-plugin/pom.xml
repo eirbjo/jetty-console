@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>jetty-console-plugins</artifactId>
+        <groupId>org.simplericity.jettyconsole</groupId>
+        <version>1.58-SNAPSHOT</version>
+    </parent>
+    <artifactId>jetty-console-spdy-plugin</artifactId>
+
+    <name>Jetty Console SPDY Plugin</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mortbay.jetty.npn</groupId>
+            <artifactId>npn-boot</artifactId>
+            <version>1.1.5.v20130313</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jdk</groupId>
+            <artifactId>tools</artifactId>
+            <version>${java.specification.version}</version>
+            <scope>system</scope>
+            <systemPath>${java.home}/../lib/tools.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.spdy</groupId>
+            <artifactId>spdy-http-server</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Agent-Class>org.simplericity.jettyconsole.plugins.spdy.SpdyAgent</Agent-Class>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

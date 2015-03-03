@@ -1,0 +1,11 @@
+org.simplericity.jettyconsole.plugins.AddJexmecToServerClassesPlugin
+org.simplericity.jettyconsole.plugins.SSLProxyPlugin
+org.simplericity.jettyconsole.plugins.ConnectorConfigurationPlugin
+org.simplericity.jettyconsole.plugins.ContextPathConfigurationPlugin
+org.simplericity.jettyconsole.plugins.InitParamConfigurationPlugin
+org.simplericity.jettyconsole.plugins.HeadlessConfigurationPlugin
+org.simplericity.jettyconsole.plugins.HelpConfigurationPlugin
+org.simplericity.jettyconsole.plugins.TmpDirPlugin
+org.simplericity.jettyconsole.plugins.ExtractWarPlugin
+org.simplericity.jettyconsole.plugins.DirAllowedPlugin
+org.simplericity.jettyconsole.plugins.SetJettyVersionPlugin

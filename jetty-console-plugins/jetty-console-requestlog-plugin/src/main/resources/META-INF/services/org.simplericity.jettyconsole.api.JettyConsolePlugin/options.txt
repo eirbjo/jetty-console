@@ -1,0 +1,8 @@
+option:requestLog
+sample:logFile
+desc:Log requests to file
+section:Request logging
+
+option:requestLogExtended
+desc:Use extended log format with referrer and user-agent
+section:Request logging

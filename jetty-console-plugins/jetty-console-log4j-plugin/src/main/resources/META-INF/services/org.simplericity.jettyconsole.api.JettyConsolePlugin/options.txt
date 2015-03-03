@@ -1,0 +1,4 @@
+option:logConfig
+sample:file
+desc:Read log4j configuration from file
+section:Options
