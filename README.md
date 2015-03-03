@@ -1,7 +1,7 @@
 JettyConsole Maven Plugin
 =========================
 
-Embeds Jetty in your war file, making it runnable with java -jar yourwebapp.war
+Embeds Jetty in your war file, making it runnable with java -jar myapp.war
 
 How to create your standalone war
 ----------
@@ -39,7 +39,7 @@ How to run your standalone war
 
 To get help on command line options, run:
 
-    java -jar mypp-jetty-console.war --help
+    java -jar myapp-jetty-console.war --help
 
 To start your webapp on port 8080, run:
 
