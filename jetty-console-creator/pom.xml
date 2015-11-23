@@ -19,7 +19,7 @@
     <parent>
         <artifactId>jetty-console</artifactId>
         <groupId>org.simplericity.jettyconsole</groupId>
-        <version>1.59</version>
+        <version>1.60-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jetty-console-creator</artifactId>
