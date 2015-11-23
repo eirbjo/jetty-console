@@ -28,7 +28,7 @@
     </description>
     <url>https://github.com/eirbjo/jetty-console</url>
     <scm>
-        <connection>scm:git:https://github.com/eirbjo/jetty-console.git</connection>
+        <connection>scm:git:git@github.com:eirbjo/jetty-console.git</connection>
     </scm>
 
     <licenses>
