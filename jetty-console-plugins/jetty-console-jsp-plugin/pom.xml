@@ -20,7 +20,7 @@
     <parent>
         <artifactId>jetty-console-plugins</artifactId>
         <groupId>org.simplericity.jettyconsole</groupId>
-        <version>1.58</version>
+        <version>1.58-SNAPSHOT</version>
     </parent>
     <artifactId>jetty-console-jsp-plugin</artifactId>
 
