@@ -15,7 +15,8 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.simplericity.jettyconsole</groupId>
@@ -27,11 +28,23 @@
         Creates runnable wars by embedding Jetty into the WAR
     </description>
     <url>https://github.com/eirbjo/jetty-console</url>
+    <developers>
+        <developer>
+            <name>Eirik Bjorsnos</name>
+            <url>http://simplericity.com/</url>
+            <email>eirbjo at gmail dot com</email>
+            <organization>Kantega AS</organization>
+            <organizationUrl>http://kantega.no</organizationUrl>
+            <timezone>GMT+1</timezone>
+        </developer>
+    </developers>
+
+
     <scm>
         <url>https://github.com/eirbjo/jetty-console</url>
         <connection>scm:git:git@github.com:eirbjo/jetty-console.git</connection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <licenses>
         <license>
@@ -47,7 +60,7 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
-    
+
     <modules>
         <module>jetty-console-api</module>
         <module>jetty-console-core</module>
