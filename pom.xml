@@ -15,14 +15,13 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.simplericity.jettyconsole</groupId>
     <artifactId>jetty-console</artifactId>
     <packaging>pom</packaging>
-    <version>1.62-SNAPSHOT</version>
+    <version>1.62</version>
     <name>Jetty-Console parent pom</name>
     <description>
         Creates runnable wars by embedding Jetty into the WAR
@@ -43,7 +42,7 @@
     <scm>
         <url>https://github.com/eirbjo/jetty-console</url>
         <connection>scm:git:git@github.com:eirbjo/jetty-console.git</connection>
-        <tag>HEAD</tag>
+        <tag>jetty-console-1.62</tag>
     </scm>
 
     <licenses>
