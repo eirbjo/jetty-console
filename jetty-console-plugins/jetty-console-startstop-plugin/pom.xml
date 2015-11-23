@@ -21,7 +21,7 @@
     <parent>
         <artifactId>jetty-console-plugins</artifactId>
         <groupId>org.simplericity.jettyconsole</groupId>
-        <version>1.58</version>
+        <version>1.59-SNAPSHOT</version>
     </parent>
 
     <artifactId>jetty-console-startstop-plugin</artifactId>
