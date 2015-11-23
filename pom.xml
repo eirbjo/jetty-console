@@ -21,7 +21,7 @@
     <groupId>org.simplericity.jettyconsole</groupId>
     <artifactId>jetty-console</artifactId>
     <packaging>pom</packaging>
-    <version>1.58-SNAPSHOT</version>
+    <version>1.58</version>
     <name>Jetty-Console parent pom</name>
     <description>
         Creates runnable wars by embedding Jetty into the WAR
@@ -29,7 +29,8 @@
     <url>https://github.com/eirbjo/jetty-console</url>
     <scm>
         <connection>scm:git:git@github.com:eirbjo/jetty-console.git</connection>
-    </scm>
+      <tag>jetty-console-1.58</tag>
+  </scm>
 
     <licenses>
         <license>
