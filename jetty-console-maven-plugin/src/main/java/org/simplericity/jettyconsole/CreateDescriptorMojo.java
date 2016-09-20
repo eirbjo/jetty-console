@@ -24,6 +24,7 @@ import org.apache.maven.artifact.resolver.ArtifactResolutionException;
 import org.apache.maven.artifact.resolver.ArtifactResolutionResult;
 import org.apache.maven.artifact.resolver.filter.ScopeArtifactFilter;
 import org.apache.maven.artifact.versioning.VersionRange;
+import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -54,8 +55,7 @@ import java.util.jar.JarFile;
  * @requiresDependencyResolution runtime
  */
 public class CreateDescriptorMojo
-    extends AbstractMojo
-{
+        extends AbstractMojo {
     /**
      * Archive configuration to read MANIFEST.MF entries from.
      * @parameter
@@ -97,10 +97,25 @@ public class CreateDescriptorMojo
     private File workingDirectory;
 
     /**
-     * Destination file for the packaged console
-     * @parameter default-value="${project.build.directory}/${project.build.finalName}-jetty-console.war"
+     * Classifier for the executable war
+     *
+     * @parameter default-value="jetty-console"
+     */
+    private String jettyConsoleClassifier;
+
+    /**
+     * Destination file for the packaged console. An error will be thrown if classifier is not present in the filename
+     *
+     * @parameter default-value="${project.build.directory}/${project.build.finalName}-${jettyConsoleClassifier}.war"
      */
     private File destinationFile;
+
+    /**
+     * Artifact to make executable
+     *
+     * @parameter
+     */
+    private Dependency artifactToMakeExecutable;
 
     /**
      * Any additional dependencies to include on the Jetty console class path
@@ -145,6 +160,8 @@ public class CreateDescriptorMojo
     private String properties;
     private Properties props;
 
+    private final String JETTY_CONSOLE_CLASSIFIER_PARAM_NAME = "jettyConsoleClassifier";
+
     public void execute()
             throws MojoExecutionException, MojoFailureException {
 
@@ -153,6 +170,17 @@ public class CreateDescriptorMojo
         // Check that the background image exists
         if(backgroundImage != null && !backgroundImage.exists()) {
             throw new MojoExecutionException("The 'backgroundImage' file you specified does not exist");
+        }
+
+        // Replace ${jettyConsoleClassifier} with actual value...
+        if (destinationFile.getName().contains("${" + JETTY_CONSOLE_CLASSIFIER_PARAM_NAME + "}")) {
+            String existingFileName = destinationFile.getName();
+            String newFileName = existingFileName.replace("${" + JETTY_CONSOLE_CLASSIFIER_PARAM_NAME + "}", jettyConsoleClassifier);
+            destinationFile = new File(destinationFile.getParent(), newFileName);
+        }
+        // Classifier must be present in destination file
+        if (!destinationFile.getName().contains(jettyConsoleClassifier)) {
+            throw new MojoExecutionException("Parameter 'destinationFile' (" + destinationFile.getName() + ") does not contain the configured value for'jettyConsoleClassifier' (" + jettyConsoleClassifier + ")");
         }
 
         Artifact warArtifact = getWarArtifact();
@@ -310,13 +338,23 @@ public class CreateDescriptorMojo
 
 
     private void attachArtifact() {
-        projectHelper.attachArtifact(project, "war", "jetty-console", destinationFile);
+        projectHelper.attachArtifact(project, "war", jettyConsoleClassifier, destinationFile);
     }
 
     public Artifact getWarArtifact() throws MojoExecutionException {
 
-        if(project.getArtifact().getFile().getName().endsWith(".war")) {
-            return project.getArtifact();
+        try {
+            if (artifactToMakeExecutable != null) {
+                Artifact artifact = artifactFactory.createDependencyArtifact(artifactToMakeExecutable.getGroupId(), artifactToMakeExecutable.getArtifactId(),
+                        VersionRange.createFromVersion(artifactToMakeExecutable.getVersion()), artifactToMakeExecutable.getType(), artifactToMakeExecutable.getClassifier(), "runtime");
+                resolver.resolve(artifact, remoteRepositories, localRepository);
+                return artifact;
+
+            }
+        } catch (ArtifactResolutionException e) {
+            throw new MojoExecutionException("Unable to resolve artifact to make executable (" + e.getMessage() + ")", e);
+        } catch (ArtifactNotFoundException e) {
+            throw new MojoExecutionException("Unable to find artifact to make executable (" + e.getMessage() + ")", e);
         }
 
         List<Artifact> wars = new ArrayList<Artifact>();
