@@ -97,25 +97,23 @@ public class CreateDescriptorMojo
     private File workingDirectory;
 
     /**
-     * Classifier for the executable war
-     *
+     * Classifier for generated console war
      * @parameter default-value="jetty-console"
      */
     private String jettyConsoleClassifier;
 
     /**
-     * Destination file for the packaged console. An error will be thrown if classifier is not present in the filename
-     *
-     * @parameter default-value="${project.build.directory}/${project.build.finalName}-${jettyConsoleClassifier}.war"
+     * Destination file for the packaged console
+     * @parameter default-value="${project.build.directory}/${project.build.finalName}-jetty-console.war"
      */
     private File destinationFile;
 
     /**
-     * Artifact to make executable
+     * War artifact
      *
      * @parameter
      */
-    private Dependency artifactToMakeExecutable;
+    private Dependency warArtifact;
 
     /**
      * Any additional dependencies to include on the Jetty console class path
@@ -160,8 +158,6 @@ public class CreateDescriptorMojo
     private String properties;
     private Properties props;
 
-    private final String JETTY_CONSOLE_CLASSIFIER_PARAM_NAME = "jettyConsoleClassifier";
-
     public void execute()
             throws MojoExecutionException, MojoFailureException {
 
@@ -170,17 +166,6 @@ public class CreateDescriptorMojo
         // Check that the background image exists
         if(backgroundImage != null && !backgroundImage.exists()) {
             throw new MojoExecutionException("The 'backgroundImage' file you specified does not exist");
-        }
-
-        // Replace ${jettyConsoleClassifier} with actual value...
-        if (destinationFile.getName().contains("${" + JETTY_CONSOLE_CLASSIFIER_PARAM_NAME + "}")) {
-            String existingFileName = destinationFile.getName();
-            String newFileName = existingFileName.replace("${" + JETTY_CONSOLE_CLASSIFIER_PARAM_NAME + "}", jettyConsoleClassifier);
-            destinationFile = new File(destinationFile.getParent(), newFileName);
-        }
-        // Classifier must be present in destination file
-        if (!destinationFile.getName().contains(jettyConsoleClassifier)) {
-            throw new MojoExecutionException("Parameter 'destinationFile' (" + destinationFile.getName() + ") does not contain the configured value for'jettyConsoleClassifier' (" + jettyConsoleClassifier + ")");
         }
 
         Artifact warArtifact = getWarArtifact();
@@ -344,9 +329,9 @@ public class CreateDescriptorMojo
     public Artifact getWarArtifact() throws MojoExecutionException {
 
         try {
-            if (artifactToMakeExecutable != null) {
-                Artifact artifact = artifactFactory.createDependencyArtifact(artifactToMakeExecutable.getGroupId(), artifactToMakeExecutable.getArtifactId(),
-                        VersionRange.createFromVersion(artifactToMakeExecutable.getVersion()), artifactToMakeExecutable.getType(), artifactToMakeExecutable.getClassifier(), "runtime");
+            if (warArtifact != null) {
+                Artifact artifact = artifactFactory.createDependencyArtifact(warArtifact.getGroupId(), warArtifact.getArtifactId(),
+                        VersionRange.createFromVersion(warArtifact.getVersion()), warArtifact.getType(), warArtifact.getClassifier(), "runtime");
                 resolver.resolve(artifact, remoteRepositories, localRepository);
                 return artifact;
 
@@ -355,6 +340,10 @@ public class CreateDescriptorMojo
             throw new MojoExecutionException("Unable to resolve artifact to make executable (" + e.getMessage() + ")", e);
         } catch (ArtifactNotFoundException e) {
             throw new MojoExecutionException("Unable to find artifact to make executable (" + e.getMessage() + ")", e);
+        }
+
+        if(project.getArtifact().getFile().getName().endsWith(".war")) {
+            return project.getArtifact();
         }
 
         List<Artifact> wars = new ArrayList<Artifact>();
