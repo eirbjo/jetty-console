@@ -55,7 +55,8 @@ import java.util.jar.JarFile;
  * @requiresDependencyResolution runtime
  */
 public class CreateDescriptorMojo
-        extends AbstractMojo {
+    extends AbstractMojo
+{
     /**
      * Archive configuration to read MANIFEST.MF entries from.
      * @parameter
@@ -328,18 +329,18 @@ public class CreateDescriptorMojo
 
     public Artifact getWarArtifact() throws MojoExecutionException {
 
-        try {
-            if (warArtifact != null) {
+        if (warArtifact != null) {
+            try {
                 Artifact artifact = artifactFactory.createDependencyArtifact(warArtifact.getGroupId(), warArtifact.getArtifactId(),
                         VersionRange.createFromVersion(warArtifact.getVersion()), warArtifact.getType(), warArtifact.getClassifier(), "runtime");
                 resolver.resolve(artifact, remoteRepositories, localRepository);
                 return artifact;
 
+            } catch (ArtifactResolutionException e) {
+                throw new MojoExecutionException("Unable to resolve war artifact (" + e.getMessage() + ")", e);
+            } catch (ArtifactNotFoundException e) {
+                throw new MojoExecutionException("Unable to find war artifact (" + e.getMessage() + ")", e);
             }
-        } catch (ArtifactResolutionException e) {
-            throw new MojoExecutionException("Unable to resolve artifact to make executable (" + e.getMessage() + ")", e);
-        } catch (ArtifactNotFoundException e) {
-            throw new MojoExecutionException("Unable to find artifact to make executable (" + e.getMessage() + ")", e);
         }
 
         if(project.getArtifact().getFile().getName().endsWith(".war")) {
