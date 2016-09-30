@@ -24,6 +24,7 @@ import org.apache.maven.artifact.resolver.ArtifactResolutionException;
 import org.apache.maven.artifact.resolver.ArtifactResolutionResult;
 import org.apache.maven.artifact.resolver.filter.ScopeArtifactFilter;
 import org.apache.maven.artifact.versioning.VersionRange;
+import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -97,10 +98,23 @@ public class CreateDescriptorMojo
     private File workingDirectory;
 
     /**
+     * Classifier for generated console war
+     * @parameter default-value="jetty-console"
+     */
+    private String jettyConsoleClassifier;
+
+    /**
      * Destination file for the packaged console
      * @parameter default-value="${project.build.directory}/${project.build.finalName}-jetty-console.war"
      */
     private File destinationFile;
+
+    /**
+     * War artifact
+     *
+     * @parameter
+     */
+    private Dependency warArtifact;
 
     /**
      * Any additional dependencies to include on the Jetty console class path
@@ -310,10 +324,24 @@ public class CreateDescriptorMojo
 
 
     private void attachArtifact() {
-        projectHelper.attachArtifact(project, "war", "jetty-console", destinationFile);
+        projectHelper.attachArtifact(project, "war", jettyConsoleClassifier, destinationFile);
     }
 
     public Artifact getWarArtifact() throws MojoExecutionException {
+
+        if (warArtifact != null) {
+            try {
+                Artifact artifact = artifactFactory.createDependencyArtifact(warArtifact.getGroupId(), warArtifact.getArtifactId(),
+                        VersionRange.createFromVersion(warArtifact.getVersion()), warArtifact.getType(), warArtifact.getClassifier(), "runtime");
+                resolver.resolve(artifact, remoteRepositories, localRepository);
+                return artifact;
+
+            } catch (ArtifactResolutionException e) {
+                throw new MojoExecutionException("Unable to resolve war artifact (" + e.getMessage() + ")", e);
+            } catch (ArtifactNotFoundException e) {
+                throw new MojoExecutionException("Unable to find war artifact (" + e.getMessage() + ")", e);
+            }
+        }
 
         if(project.getArtifact().getFile().getName().endsWith(".war")) {
             return project.getArtifact();
