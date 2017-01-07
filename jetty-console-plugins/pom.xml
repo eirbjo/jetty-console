@@ -46,5 +46,6 @@
     <module>jetty-console-gzip-plugin</module>
     <module>jetty-console-winsrv-plugin</module>
     <module>jetty-console-startstop-plugin</module>
+    <module>jetty-console-websocket-plugin</module>
   </modules>
 </project>
