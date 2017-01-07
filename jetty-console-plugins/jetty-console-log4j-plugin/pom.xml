@@ -20,7 +20,7 @@
     <parent>
         <artifactId>jetty-console-plugins</artifactId>
         <groupId>org.simplericity.jettyconsole</groupId>
-        <version>1.60-SNAPSHOT</version>
+        <version>1.60</version>
     </parent>
     <artifactId>jetty-console-log4j-plugin</artifactId>
     <name>Jetty Console Log4j plugin</name>
