@@ -184,7 +184,7 @@
     </dependencies>
 
     <properties>
-        <jetty.version>9.4.0.v20161208</jetty.version>
+        <jetty.version>9.4.12.v20180830</jetty.version>
         <jexmec.version>2.0.0rc7</jexmec.version>
         <slf4j.version>1.7.5</slf4j.version>
     </properties>
