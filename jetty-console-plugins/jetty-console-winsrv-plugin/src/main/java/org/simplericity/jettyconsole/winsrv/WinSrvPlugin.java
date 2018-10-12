@@ -140,9 +140,8 @@ public class WinSrvPlugin extends JettyConsolePluginBase {
 
     /**
      * Return a File pointing to the location of the Jar file this Main method is executed from.
-     * @return
      */
-    public File getWarLocation() {
+    private File getWarLocation() {
         URL resource = WinSrvPlugin.class.getResource("/META-INF/jettyconsole/jettyconsole.properties");
         String file = resource.getFile();
         file = file.substring("file:".length(), file.indexOf("!"));

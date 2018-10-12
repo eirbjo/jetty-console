@@ -83,8 +83,8 @@ public class JettyConsoleBootstrapMainClass implements Runnable {
 
     /**
      * Create an instance of Main and invoke the {@link JettyConsoleBootstrapMainClass#run()} method.
-     * @param arguments
-     * @throws Exception
+     * @param arguments CLI parameters
+     * @throws Exception if an exception occurs
      */
     public static void main(String[] arguments) throws Exception {
         new JettyConsoleBootstrapMainClass().run(arguments);
@@ -299,9 +299,8 @@ public class JettyConsoleBootstrapMainClass implements Runnable {
 
     /**
      * Return a File pointing to the location of the Jar file this Main method is executed from.
-     * @return
      */
-    public static File getWarLocation() {
+    private static File getWarLocation() {
         URL resource = JettyConsoleBootstrapMainClass.class.getResource("/META-INF/jettyconsole/jettyconsole.properties");
         String file = resource.getFile();
         file = file.substring("file:".length(), file.indexOf("!"));
