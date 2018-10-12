@@ -28,6 +28,9 @@ import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.MavenProjectHelper;
 import org.simplericity.jettyconsole.creator.Creator;
@@ -47,13 +50,8 @@ import java.util.jar.JarFile;
  *
  * This is intended to be an easy way to distribute webapps for review/testing etc without the need to distribute and/or
  * configure a servlet container.
- *
- * @goal createconsole
- *
- * @phase package
- *
- * @requiresDependencyResolution runtime
  */
+@Mojo(name = "createconsole", defaultPhase = LifecyclePhase.PACKAGE, requiresDependencyResolution =  ResolutionScope.RUNTIME)
 public class CreateDescriptorMojo
     extends AbstractMojo
 {
