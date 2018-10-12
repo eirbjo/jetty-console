@@ -32,8 +32,6 @@
             <name>Eirik Bjorsnos</name>
             <url>http://simplericity.com/</url>
             <email>eirbjo at gmail dot com</email>
-            <organization>Kantega AS</organization>
-            <organizationUrl>http://kantega.no</organizationUrl>
             <timezone>GMT+1</timezone>
         </developer>
     </developers>
@@ -54,7 +52,7 @@
 
     <distributionManagement>
         <repository>
-            <id>oss.sonatype.org-kantega</id>
+            <id>oss.sonatype.org</id>
             <name>Nexus Release Repository</name>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
